@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>陳福麟 — UI/UX 設計作品集</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&family=DM+Mono:wght@400;500&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #f5f0e8;
+    --ink: #1a1612;
+    --ink-light: #6b6259;
+    --ink-muted: #a09890;
+    --accent: #2d5a3d;
+    --accent-light: #e8f0eb;
+    --border: #ddd8d0;
+    --white: #ffffff;
+    --tag-bg: #ede8e0;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 3rem;
+    background: rgba(245, 240, 232, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--ink-light);
+    letter-spacing: 0.08em;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    color: var(--ink-light);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--ink); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 3rem 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(45,90,61,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.35s forwards;
+  }
+
+  .hero-title em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .hero-desc {
+    font-size: 17px;
+    color: var(--ink-light);
+    max-width: 540px;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.5s forwards;
+  }
+
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.65s forwards;
+  }
+
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    padding: 5px 14px;
+    background: var(--tag-bg);
+    border-radius: 100px;
+    color: var(--ink-light);
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 3rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--ink-muted);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 1s forwards;
+  }
+
+  .scroll-hint::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--ink-muted);
+  }
+
+  /* SECTION */
+  section {
+    padding: 6rem 3rem;
+  }
+
+  .section-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-muted);
+    letter-spacing: 0.1em;
+  }
+
+  .section-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+
+  /* CASE STUDY CARD */
+  .case-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .case-card:hover {
+    box-shadow: 0 8px 40px rgba(26,22,18,0.08);
+  }
+
+  .case-card-header {
+    padding: 2.5rem 2.5rem 2rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .case-type {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+
+  .case-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+  }
+
+  .case-subtitle {
+    font-size: 14px;
+    color: var(--ink-light);
+    line-height: 1.7;
+    max-width: 480px;
+  }
+
+  .case-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    flex-shrink: 0;
+    min-width: 180px;
+  }
+
+  .case-meta-item {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 0.6rem 0.75rem;
+  }
+
+  .case-meta-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 3px;
+  }
+
+  .case-meta-value {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .case-body {
+    padding: 2.5rem;
+  }
+
+  .case-section {
+    margin-bottom: 2rem;
+  }
+
+  .case-section:last-child { margin-bottom: 0; }
+
+  .case-section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .case-section-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+  }
+
+  .case-text {
+    font-size: 14px;
+    color: var(--ink-light);
+    line-height: 1.8;
+  }
+
+  .case-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2rem 0;
+  }
+
+  /* COMPARE */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 1rem;
+  }
+
+  .compare-col {
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 1rem 1.25rem;
+    background: var(--cream);
+  }
+
+  .compare-col.after {
+    background: var(--accent-light);
+    border-color: rgba(45,90,61,0.2);
+  }
+
+  .compare-head {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .compare-col.after .compare-head {
+    color: var(--accent);
+  }
+
+  .compare-item {
+    display: flex;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--ink-light);
+    margin-bottom: 7px;
+    line-height: 1.5;
+  }
+
+  .compare-item .dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--ink-muted);
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+
+  .compare-col.after .compare-item .dot {
+    background: var(--accent);
+  }
+
+  /* DECISION BOX */
+  .decision-box {
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 3px 3px 0;
+    padding: 1rem 1.25rem;
+    margin-top: 1rem;
+    background: var(--white);
+  }
+
+  .decision-q {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .decision-a {
+    font-size: 13px;
+    color: var(--ink-light);
+    line-height: 1.75;
+  }
+
+  /* SKILLS */
+  .skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 0.75rem;
+  }
+
+  .skill-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    padding: 4px 12px;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    color: var(--ink-light);
+    background: var(--cream);
+    letter-spacing: 0.02em;
+  }
+
+  /* TRANSFORM ARROW */
+  .transform-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 1rem;
+  }
+
+  .transform-box {
+    flex: 1;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 0.85rem 1rem;
+    font-size: 13px;
+    color: var(--ink-light);
+    background: var(--cream);
+    line-height: 1.6;
+  }
+
+  .transform-box.result {
+    background: var(--accent-light);
+    border-color: rgba(45,90,61,0.2);
+    color: var(--ink);
+  }
+
+  .transform-box strong {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .transform-box.result strong {
+    color: var(--accent);
+  }
+
+  .transform-arrow {
+    font-size: 18px;
+    color: var(--ink-muted);
+    flex-shrink: 0;
+  }
+
+  /* CONTACT */
+  .contact-section {
+    background: var(--ink);
+    padding: 6rem 3rem;
+  }
+
+  .contact-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .contact-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 0.75rem;
+  }
+
+  .contact-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.2;
+  }
+
+  .contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--white);
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 0.9rem 1.75rem;
+    border-radius: 100px;
+    transition: all 0.2s;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  .contact-link:hover {
+    background: var(--white);
+    color: var(--ink);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 1.5rem 3rem;
+    text-align: center;
+  }
+
+  footer p {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.2);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { padding: 7rem 1.5rem 4rem; }
+    section { padding: 4rem 1.5rem; }
+    .case-card-header { flex-direction: column; }
+    .case-meta { grid-template-columns: repeat(4, 1fr); min-width: unset; width: 100%; }
+    .case-body { padding: 1.5rem; }
+    .compare-grid { grid-template-columns: 1fr; }
+    .transform-row { flex-direction: column; }
+    .transform-arrow { transform: rotate(90deg); }
+    .contact-inner { flex-direction: column; text-align: center; }
+    .contact-section { padding: 4rem 1.5rem; }
+    footer { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">FL.CHEN</a>
+  <ul class="nav-links">
+    <li><a href="#work">作品</a></li>
+    <li><a href="#about">關於我</a></li>
+    <li><a href="#contact">聯絡</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">UI/UX Designer &amp; Web Planner</p>
+    <h1 class="hero-title">陳福麟<br><em>設計有邏輯，</em><br>溝通有耐心。</h1>
+    <p class="hero-desc">三年網站改版與規劃經驗，從內容盤點、資訊架構到視覺設計，習慣在動手設計之前先想清楚使用者的目的。</p>
+    <div class="hero-tags">
+      <span class="hero-tag">資訊架構</span>
+      <span class="hero-tag">UI 設計</span>
+      <span class="hero-tag">Penpot / Figma</span>
+      <span class="hero-tag">政府機關網站</span>
+      <span class="hero-tag">客戶溝通</span>
+    </div>
+  </div>
+  <p class="scroll-hint">SCROLL TO WORK</p>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="section-title">作品</h2>
+    </div>
+
+    <!-- CASE 1 -->
+    <div class="case-card fade-in">
+      <div class="case-card-header">
+        <div>
+          <p class="case-type">網站改版 · 政府機關</p>
+          <h3 class="case-title">農業部林業試驗所圖書館<br>網站改版</h3>
+          <p class="case-subtitle">主導一個老舊圖書館網站的完整改版，從資訊架構重整、視覺設計到客戶確認，全程獨立執行。</p>
+        </div>
+        <div class="case-meta">
+          <div class="case-meta-item">
+            <div class="case-meta-label">時長</div>
+            <div class="case-meta-value">約 6 個月</div>
+          </div>
+          <div class="case-meta-item">
+            <div class="case-meta-label">角色</div>
+            <div class="case-meta-value">設計負責人</div>
+          </div>
+          <div class="case-meta-item">
+            <div class="case-meta-label">溝通</div>
+            <div class="case-meta-value">Email + Figma</div>
+          </div>
+          <div class="case-meta-item">
+            <div class="case-meta-label">產業</div>
+            <div class="case-meta-value">學術圖書館</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-body">
+        <div class="case-section">
+          <p class="case-section-label">我觀察到的問題</p>
+          <div class="compare-grid">
+            <div class="compare-col">
+              <p class="compare-head">改版前的問題</p>
+              <div class="compare-item"><span class="dot"></span>首頁月曆佔空間，與使用者目的無關</div>
+              <div class="compare-item"><span class="dot"></span>大量「No Image」縮圖，視覺破碎</div>
+              <div class="compare-item"><span class="dot"></span>搜尋框與實際館藏量不符</div>
+              <div class="compare-item"><span class="dot"></span>數位典藏資源未被呈現</div>
+            </div>
+            <div class="compare-col after">
+              <p class="compare-head">我提出的改善方向</p>
+              <div class="compare-item"><span class="dot"></span>移除月曆，首頁聚焦館藏價值</div>
+              <div class="compare-item"><span class="dot"></span>以數位典藏資源取代新書展示</div>
+              <div class="compare-item"><span class="dot"></span>將搜尋移至電子資源內頁</div>
+              <div class="compare-item"><span class="dot"></span>規劃「數位典藏資源」專區</div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="case-divider">
+
+        <div class="case-section">
+          <p class="case-section-label">我的工作流程</p>
+          <p class="case-text">從全站內容盤點開始，逐一整理每個頁面的欄位數量與資料類型，建立 Sitemap 與資料結構文件。設計完成後透過 Figma prototype 以 email 方式讓客戶確認，歷經多輪調整後定稿。</p>
+
+          <div class="decision-box">
+            <p class="decision-q">為什麼把搜尋框從首頁移除？</p>
+            <p class="decision-a">館藏電子書數量有限，搜尋結果稀疏反而讓人覺得資源很少。我將查詢功能整合進電子資源內頁，讓使用者在有脈絡的環境下搜尋，避免首頁給人錯誤的第一印象。</p>
+          </div>
+
+          <div class="decision-box" style="margin-top: 10px;">
+            <p class="decision-q">數位典藏資源為什麼值得放在首頁？</p>
+            <p class="decision-a">這個圖書館收藏了大量日治時期珍貴的林業文獻，是它獨特的館藏價值。不應該被埋在深層頁面，應該在首頁就讓訪客看見。</p>
+          </div>
+        </div>
+
+        <hr class="case-divider">
+
+        <div class="case-section">
+          <p class="case-section-label">我負責的視覺設計範圍</p>
+          <p class="case-text">Banner 設計、Logo 設計、各頁面 Header Image、相關單位連結圖片（將文字連結改為圖片卡片）。</p>
+        </div>
+
+        <hr class="case-divider">
+
+        <div class="case-section">
+          <p class="case-section-label">客戶回饋</p>
+          <p class="case-text" style="font-style: italic; border-left: 2px solid var(--accent); padding-left: 1rem;">「上傳功能很方便，首頁變得很漂亮。」</p>
+        </div>
+
+        <hr class="case-divider">
+
+        <div class="case-section">
+          <p class="case-section-label">執行的 UX 流程</p>
+          <div class="skill-list">
+            <span class="skill-tag">Content Audit</span>
+            <span class="skill-tag">Information Architecture</span>
+            <span class="skill-tag">Sitemap 規劃</span>
+            <span class="skill-tag">Figma Prototype</span>
+            <span class="skill-tag">Iterative Design</span>
+            <span class="skill-tag">Remote Usability Testing</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE 2 -->
+    <div class="case-card fade-in">
+      <div class="case-card-header">
+        <div>
+          <p class="case-type">從零建置 · 政府機關</p>
+          <h3 class="case-title">臺灣蠶蜂昆蟲教育園區<br>網站建置</h3>
+          <p class="case-subtitle">從一份園區摺頁出發，在客戶沒有明確需求的情況下，獨立規劃資訊架構，並完成完整的視覺設計。</p>
+        </div>
+        <div class="case-meta">
+          <div class="case-meta-item">
+            <div class="case-meta-label">時長</div>
+            <div class="case-meta-value">約 6 個月</div>
+          </div>
+          <div class="case-meta-item">
+            <div class="case-meta-label">角色</div>
+            <div class="case-meta-value">設計負責人</div>
+          </div>
+          <div class="case-meta-item">
+            <div class="case-meta-label">架構版本</div>
+            <div class="case-meta-value">5 個迭代</div>
+          </div>
+          <div class="case-meta-item">
+            <div class="case-meta-label">目標使用者</div>
+            <div class="case-meta-value">一般民眾</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-body">
+        <div class="case-section">
+          <p class="case-section-label">挑戰</p>
+          <p class="case-text">客戶沒有任何網站規劃概念，只提供了一份園區摺頁。摺頁以「場館」為單位呈現資訊，是適合紙本的邏輯，但不適合直接套用到網站架構。整個資訊架構和視覺設計都需要從頭思考。溝通上，有幾次 email 回覆超過一個月，必須在資訊不足的情況下持續推進。</p>
+        </div>
+
+        <hr class="case-divider">
+
+        <div class="case-section">
+          <p class="case-section-label">核心思考：從場館邏輯到使用者邏輯</p>
+          <div class="transform-row">
+            <div class="transform-box">
+              <strong>摺頁的邏輯（以場館為主）</strong>
+              蠶業文化館 → 環境教育大樓 → 生物產業館 → 農業博覽館
+            </div>
+            <span class="transform-arrow">→</span>
+            <div class="transform-box result">
+              <strong>網站架構（以使用者目的為主）</strong>
+              想了解園區 → 想來參觀 → 想學習 → 看活動花絮
+            </div>
+          </div>
+          <p class="case-text" style="margin-top: 1rem;">我同時站在兩個視角思考：「使用者來這個網站想知道什麼？」以及「客戶希望使用者看到什麼業務內容？」從這兩個角度反覆推敲，經過五個版本的架構迭代，最終定案。</p>
+        </div>
+
+        <hr class="case-divider">
+
+        <div class="case-section">
+          <p class="case-section-label">內容規劃</p>
+          <p class="case-text">摺頁內容有限，我主動詢問客戶哪些現有文件可以補充網站。客戶提供一個未整理的 Google Drive 照片資料夾，我將所有照片依活動名稱分類，再篩選出最適合首頁的視覺素材。</p>
+
+          <div class="decision-box">
+            <p class="decision-q">當客戶沒有明確需求時，我怎麼推進？</p>
+            <p class="decision-a">主動規劃出具體的架構版本，讓客戶有東西可以反應。這樣的方式讓溝通從「你想要什麼」變成「這樣可以嗎？」，大幅降低溝通成本，也讓客戶更容易給出有用的回饋。</p>
+          </div>
+        </div>
+
+        <hr class="case-divider">
+
+        <div class="case-section">
+          <p class="case-section-label">成果</p>
+          <p class="case-text">視覺設計完成後，客戶沒有提出任何修改意見。這讓我意識到只要前期把使用者和客戶的雙重需求想清楚，設計方向自然不會偏差。</p>
+        </div>
+
+        <hr class="case-divider">
+
+        <div class="case-section">
+          <p class="case-section-label">執行的 UX 流程</p>
+          <div class="skill-list">
+            <span class="skill-tag">從零規劃資訊架構</span>
+            <span class="skill-tag">使用者視角模擬</span>
+            <span class="skill-tag">Iterative Design</span>
+            <span class="skill-tag">內容策略規劃</span>
+            <span class="skill-tag">照片內容整理與篩選</span>
+            <span class="skill-tag">非同步溝通管理</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="background: var(--white);">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2 class="section-title">關於我</h2>
+    </div>
+    <div class="fade-in" style="max-width: 600px;">
+      <p style="font-size: 16px; color: var(--ink-light); line-height: 1.9; margin-bottom: 1.5rem;">
+        我在網站行銷與規劃領域工作了三年，主要負責政府機關網站的改版與建置。從資訊架構、內容盤點到視覺設計，習慣在動手之前先想清楚使用者的目的。
+      </p>
+      <p style="font-size: 16px; color: var(--ink-light); line-height: 1.9; margin-bottom: 2rem;">
+        目前正在往 UI/UX 設計師的方向發展，使用 Penpot 與 Inkscape 進行設計工作。
+      </p>
+      <div class="skill-list">
+        <span class="skill-tag">Penpot</span>
+        <span class="skill-tag">Figma</span>
+        <span class="skill-tag">Inkscape</span>
+        <span class="skill-tag">Krita</span>
+        <span class="skill-tag">資訊架構</span>
+        <span class="skill-tag">Content Audit</span>
+        <span class="skill-tag">政府機關網站</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div>
+      <p class="contact-label">聯絡我</p>
+      <h2 class="contact-title">有合作機會？<br>歡迎寫信給我。</h2>
+    </div>
+    <a href="mailto:chenfulin214@gmail.com" class="contact-link">
+      chenfulin214@gmail.com →
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 陳福麟 · UI/UX Designer</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
