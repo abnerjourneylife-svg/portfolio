@@ -547,6 +547,10 @@
     transform: translateY(0);
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    .fade-in { opacity: 1; transform: none; }
+  }
+
   /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
@@ -784,6 +788,136 @@
       </div>
     </div>
 
+    <!-- CASE 3 -->
+    <div class="case-card fade-in">
+      <div class="case-card-header">
+        <div>
+          <p class="case-type">多專案同時執行 · 系統遷移</p>
+          <h3 class="case-title">生物多樣性研究所（中英文版）<br>& 野生動物急救站 網站改版</h3>
+          <p class="case-subtitle">入職初期同時執行三個改版專案，在系統限制的框架下，透過內容整理與無障礙優化，讓網站對民眾更易讀、更易用。</p>
+        </div>
+        <div class="case-meta">
+          <div class="case-meta-item">
+            <div class="case-meta-label">專案數量</div>
+            <div class="case-meta-value">3 個同時</div>
+          </div>
+          <div class="case-meta-item">
+            <div class="case-meta-label">角色</div>
+            <div class="case-meta-value">設計負責人</div>
+          </div>
+          <div class="case-meta-item">
+            <div class="case-meta-label">性質</div>
+            <div class="case-meta-value">系統遷移改版</div>
+          </div>
+          <div class="case-meta-item">
+            <div class="case-meta-label">目標使用者</div>
+            <div class="case-meta-value">一般民眾</div>
+          </div>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="case-section">
+          <p class="case-section-label">背景</p>
+          <p class="case-text">這是我入職後第一批接手的專案，三個同時進行。主要工作是系統遷移，視覺上以原有網站為基礎，不做大幅更動。網站的資訊架構由我自行規劃，重心放在讓內容更好閱讀、更易使用。</p>
+        </div>
+        <hr class="case-divider">
+        <div class="case-section">
+          <p class="case-section-label">我做的事</p>
+          <p class="case-text" style="margin-bottom:0.75rem;">🔹 <strong style="color:var(--ink)">無障礙內容優化</strong> — 調整文字大小單位、修正色彩對比比例、補充圖片替代文字（超過 75 字的說明額外補充在上下行），並請客戶確認內容正確性。</p>
+          <p class="case-text" style="margin-bottom:0.75rem;">🔹 <strong style="color:var(--ink)">內容排版優化</strong> — 重新整理所有頁面的文字排版，將重點資訊前置，引導民眾向下閱讀完整內容。</p>
+          <p class="case-text" style="margin-bottom:0.75rem;">🔹 <strong style="color:var(--ink)">民眾信箱 + FAQ 功能規劃</strong> — 規劃民眾詢問信箱，並建立 FAQ 集合體，讓民眾在寄信前可以先查閱常見問題。</p>
+          <div class="decision-box">
+            <p class="decision-q">系統限制下的替代方案：場館地圖連結</p>
+            <p class="decision-a">原網站以 SVG 圖片加點擊連結的方式呈現場館介紹，但新系統無法支援這個功能。我將場館內容重新整理進 Menu 導覽，並在排版上以重點前置引導民眾閱讀，確保資訊不因系統限制而流失。</p>
+          </div>
+        </div>
+        <hr class="case-divider">
+        <div class="case-section">
+          <p class="case-section-label">執行的工作項目</p>
+          <div class="skill-list">
+            <span class="skill-tag">資訊架構規劃</span>
+            <span class="skill-tag">無障礙內容優化</span>
+            <span class="skill-tag">色彩對比調整</span>
+            <span class="skill-tag">圖片替代文字</span>
+            <span class="skill-tag">內容排版優化</span>
+            <span class="skill-tag">功能替代方案規劃</span>
+            <span class="skill-tag">FAQ 內容策略</span>
+            <span class="skill-tag">多專案同時管理</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE 4 -->
+    <div class="case-card fade-in">
+      <div class="case-card-header">
+        <div>
+          <p class="case-type">查詢系統設計 · 開發中</p>
+          <h3 class="case-title">對外貿易植物檢疫查詢系統</h3>
+          <p class="case-subtitle">面對 200GB 的龐大資料庫，重新設計查詢體驗，讓台灣廠商能快速找到出口植物產品所需的檢疫條件。</p>
+        </div>
+        <div class="case-meta">
+          <div class="case-meta-item">
+            <div class="case-meta-label">資料量</div>
+            <div class="case-meta-value">200GB</div>
+          </div>
+          <div class="case-meta-item">
+            <div class="case-meta-label">國家筆數</div>
+            <div class="case-meta-value">104 個</div>
+          </div>
+          <div class="case-meta-item">
+            <div class="case-meta-label">目標使用者</div>
+            <div class="case-meta-value">出口廠商</div>
+          </div>
+          <div class="case-meta-item">
+            <div class="case-meta-label">狀態</div>
+            <div class="case-meta-value">開發中</div>
+          </div>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="case-section">
+          <p class="case-section-label">我觀察到的核心問題</p>
+          <p class="case-text">舊版查詢系統是條件式的——選完國家才出現產品分類，選完分類才出現農產品清單。這種設計讓使用者不知道還有幾步才能找到答案。另一個問題是有些廠商想從產品反查可出口的國家，但舊系統只支援從國家開始查。</p>
+        </div>
+        <hr class="case-divider">
+        <div class="case-section">
+          <p class="case-section-label">三個關鍵設計決策</p>
+          <div class="decision-box">
+            <p class="decision-q">① 全欄位一次顯示，取代條件式逐步展開</p>
+            <p class="decision-a">把所有篩選欄位同時呈現，讓使用者一眼看到整個查詢的全貌，消除「不知道還有幾步」的焦慮感。</p>
+          </div>
+          <div class="decision-box" style="margin-top:10px;">
+            <p class="decision-q">② 即時搜尋，不需要按下搜尋按鈕</p>
+            <p class="decision-a">選擇國家或輸入關鍵字後，下方結果即時更新。無論是植物名稱或學名，使用者只要輸入部分文字就會立即出現所有相關結果，支援使用者不確定完整名稱或學名的搜尋情境。</p>
+          </div>
+          <div class="decision-box" style="margin-top:10px;">
+            <p class="decision-q">③ 響應式設計：桌機與手機顯示不同內容</p>
+            <p class="decision-a">在系統套件限制下，透過 CSS 讓同一個元件在桌機版顯示系統說明文字，在螢幕寬度小於 767px 時自動切換成搜尋框圖片加連結，讓手機使用者進入網站後能立即找到查詢入口，不需要先閱讀說明。</p>
+          </div>
+        </div>
+        <hr class="case-divider">
+        <div class="case-section">
+          <p class="case-section-label">最大的挑戰</p>
+          <p class="case-text">每個國家的檢疫條件規定長短不一，無法用單一欄位格式容納。我花了較多時間與客戶逐一確認每個欄位的重要性，從使用者「需要知道什麼才能完成出口作業」的角度出發，整合重複或次要的欄位，讓查詢結果更聚焦。</p>
+        </div>
+        <hr class="case-divider">
+        <div class="case-section">
+          <p class="case-section-label">執行的 UX 流程</p>
+          <div class="skill-list">
+            <span class="skill-tag">查詢系統 UX 設計</span>
+            <span class="skill-tag">即時搜尋體驗規劃</span>
+            <span class="skill-tag">響應式設計</span>
+            <span class="skill-tag">資訊架構</span>
+            <span class="skill-tag">Content Strategy</span>
+            <span class="skill-tag">欄位整合規劃</span>
+            <span class="skill-tag">使用者情境模擬</span>
+            <span class="skill-tag">大型資料庫 UX</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -836,11 +970,19 @@
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.05, rootMargin: '0px 0px -50px 0px' });
 
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  document.querySelectorAll('.fade-in').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight) {
+      el.classList.add('visible');
+    } else {
+      observer.observe(el);
+    }
+  });
 </script>
 
 </body>
