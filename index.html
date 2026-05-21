@@ -551,6 +551,14 @@
     .fade-in { opacity: 1; transform: none; }
   }
 
+  /* BEFORE AFTER IMAGES */
+  .ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 1rem; }
+  .ba-grid.three { grid-template-columns: 1fr 1fr 1fr; }
+  .ba-col { display: flex; flex-direction: column; gap: 6px; }
+  .ba-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); }
+  .ba-label.after { color: var(--accent); }
+  .ba-img { width: 100%; border-radius: 3px; border: 1px solid var(--border); display: block; object-fit: cover; }
+
   /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
@@ -566,6 +574,8 @@
     .contact-inner { flex-direction: column; text-align: center; }
     .contact-section { padding: 4rem 1.5rem; }
     footer { padding: 1.5rem; }
+    .ba-grid { grid-template-columns: 1fr; }
+    .ba-grid.three { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -688,6 +698,22 @@
         <hr class="case-divider">
 
         <div class="case-section">
+          <p class="case-section-label">改版前後對比</p>
+          <div class="ba-grid">
+            <div class="ba-col">
+              <span class="ba-label">改版前</span>
+              <img src="image/林業試驗所圖書館改版前.png" alt="林業試驗所圖書館改版前" class="ba-img">
+            </div>
+            <div class="ba-col">
+              <span class="ba-label after">改版後</span>
+              <img src="image/林業試驗所圖書館改版後.png" alt="林業試驗所圖書館改版後" class="ba-img">
+            </div>
+          </div>
+        </div>
+
+        <hr class="case-divider">
+
+        <div class="case-section">
           <p class="case-section-label">執行的 UX 流程</p>
           <div class="skill-list">
             <span class="skill-tag">Content Audit</span>
@@ -783,6 +809,22 @@
             <span class="skill-tag">內容策略規劃</span>
             <span class="skill-tag">照片內容整理與篩選</span>
             <span class="skill-tag">非同步溝通管理</span>
+          </div>
+        </div>
+
+        <hr class="case-divider">
+
+        <div class="case-section">
+          <p class="case-section-label">改版前後對比</p>
+          <div class="ba-grid">
+            <div class="ba-col">
+              <span class="ba-label">改版前（園區摺頁）</span>
+              <img src="image/臺灣蠶蜂蟲教育園區改版前.png" alt="臺灣蠶蜂昆蟲教育園區改版前摺頁" class="ba-img">
+            </div>
+            <div class="ba-col">
+              <span class="ba-label after">改版後</span>
+              <img src="image/台灣蠶蜂昆蟲教育園區改版後.png" alt="臺灣蠶蜂昆蟲教育園區改版後網站" class="ba-img">
+            </div>
           </div>
         </div>
       </div>
@@ -913,6 +955,62 @@
             <span class="skill-tag">欄位整合規劃</span>
             <span class="skill-tag">使用者情境模擬</span>
             <span class="skill-tag">大型資料庫 UX</span>
+          </div>
+        </div>
+
+        <hr class="case-divider">
+
+        <div class="case-section">
+          <p class="case-section-label">改版前後對比</p>
+          <div class="ba-grid three">
+            <div class="ba-col">
+              <span class="ba-label">改版前</span>
+              <img src="image/對外貿易植物檢疫查詢系統改版前.png" alt="對外貿易植物檢疫查詢系統改版前" class="ba-img">
+            </div>
+            <div class="ba-col">
+              <span class="ba-label after">改版後（桌機）</span>
+              <img src="image/對外貿易植物檢疫查詢系統改版後.png" alt="對外貿易植物檢疫查詢系統改版後桌機版" class="ba-img">
+            </div>
+            <div class="ba-col">
+              <span class="ba-label after">改版後（手機）</span>
+              <img src="image/對外貿易植物檢疫查詢系統改版後手機板.png" alt="對外貿易植物檢疫查詢系統改版後手機版" class="ba-img">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE 5 -->
+    <div class="case-card fade-in">
+      <div class="case-card-header">
+        <div>
+          <p class="case-type">網站改版 · 開發中</p>
+          <h3 class="case-title">農業有益昆蟲資訊網</h3>
+          <p class="case-subtitle">協助農民查詢有益昆蟲、害蟲天敵與蜜蜂蠶蟲養殖資訊的專業平台改版。</p>
+        </div>
+        <div class="case-meta">
+          <div class="case-meta-item">
+            <div class="case-meta-label">目標使用者</div>
+            <div class="case-meta-value">農民 / 從業人員</div>
+          </div>
+          <div class="case-meta-item">
+            <div class="case-meta-label">狀態</div>
+            <div class="case-meta-value">開發中</div>
+          </div>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="case-section">
+          <p class="case-section-label">改版前後對比</p>
+          <div class="ba-grid">
+            <div class="ba-col">
+              <span class="ba-label">改版前</span>
+              <img src="image/農業有益昆蟲資訊網改版前.png" alt="農業有益昆蟲資訊網改版前" class="ba-img">
+            </div>
+            <div class="ba-col">
+              <span class="ba-label after">改版後</span>
+              <img src="image/農業有益昆蟲資訊網改版後.png" alt="農業有益昆蟲資訊網改版後" class="ba-img">
+            </div>
           </div>
         </div>
       </div>
