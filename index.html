@@ -984,14 +984,18 @@
     <div class="case-card fade-in">
       <div class="case-card-header">
         <div>
-          <p class="case-type">網站改版 · 開發中</p>
+          <p class="case-type">網站改版 · 進行中</p>
           <h3 class="case-title">農業有益昆蟲資訊網</h3>
-          <p class="case-subtitle">協助農民查詢有益昆蟲、害蟲天敵與蜜蜂蠶蟲養殖資訊的專業平台改版。</p>
+          <p class="case-subtitle">這個案子是我處理過資訊架構深度問題中最複雜的一個，也讓我最清楚地感受到設計能力與執行環境之間的落差。</p>
         </div>
         <div class="case-meta">
           <div class="case-meta-item">
             <div class="case-meta-label">目標使用者</div>
             <div class="case-meta-value">農民 / 從業人員</div>
+          </div>
+          <div class="case-meta-item">
+            <div class="case-meta-label">核心問題</div>
+            <div class="case-meta-value">架構深達 5 層</div>
           </div>
           <div class="case-meta-item">
             <div class="case-meta-label">狀態</div>
@@ -1001,6 +1005,35 @@
       </div>
       <div class="case-body">
         <div class="case-section">
+          <p class="case-section-label">我診斷出的問題</p>
+          <p class="case-text">過去的案子我也處理過資訊架構過深的問題，但這個網站是程度最深的一個——真正有價值的內容（養殖技術、生活史、授粉技術等）被埋在第四、五層之後。使用者必須一層一層點進去，而且在同一層的平行內容之間切換也非常困難，整個操作過程讓人感覺「永無止境」。內容用跳出視窗加下拉選單呈現，使用者沒有辦法一眼看到「這個分類下面有什麼」，只能一個一個點開來確認。</p>
+        </div>
+        <hr class="case-divider">
+        <div class="case-section">
+          <p class="case-section-label">我的設計思考</p>
+          <div class="decision-box">
+            <p class="decision-q">把四個子分類同時攤開在同一頁</p>
+            <p class="decision-a">以蜜蜂養殖技術為例，舊版把「養殖技術」分成四個子分類，每個底下還有 12 個左右項目。我的方向是讓使用者進入頁面後直接看到所有子分類和項目，不需要猜、不需要點開，掃描一遍就知道要找的內容在哪裡。</p>
+          </div>
+          <div class="decision-box" style="margin-top:10px;">
+            <p class="decision-q">遇到的限制：系統框架無法完整實現設計</p>
+            <p class="decision-a">目前使用的網站系統框架對版面有較多限制，無法完整實現卡片式視覺化導覽的設計。這個限制讓我持續思考如何在框架內找到替代方案，也讓我更清楚地意識到——要真正把設計做好，需要一個能夠實現設計決策的工作環境。</p>
+          </div>
+        </div>
+        <hr class="case-divider">
+        <div class="case-section">
+          <p class="case-section-label">執行的 UX 流程</p>
+          <div class="skill-list">
+            <span class="skill-tag">資訊架構重整</span>
+            <span class="skill-tag">Deep Navigation 診斷</span>
+            <span class="skill-tag">內容整合規劃</span>
+            <span class="skill-tag">視覺化導覽設計</span>
+            <span class="skill-tag">系統限制下的替代方案</span>
+            <span class="skill-tag">使用者情境模擬</span>
+          </div>
+        </div>
+        <hr class="case-divider">
+        <div class="case-section">
           <p class="case-section-label">改版前後對比</p>
           <div class="ba-grid">
             <div class="ba-col">
@@ -1008,7 +1041,7 @@
               <img src="image/農業有益昆蟲資訊網改版前.png" alt="農業有益昆蟲資訊網改版前" class="ba-img">
             </div>
             <div class="ba-col">
-              <span class="ba-label after">改版後</span>
+              <span class="ba-label after">改版後（進行中）</span>
               <img src="image/農業有益昆蟲資訊網改版後.png" alt="農業有益昆蟲資訊網改版後" class="ba-img">
             </div>
           </div>
